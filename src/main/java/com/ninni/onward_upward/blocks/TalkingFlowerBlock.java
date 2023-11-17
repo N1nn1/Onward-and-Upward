@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -48,15 +47,9 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
     }
 
     @Override
-    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
-        super.onPlace(blockState, level, blockPos, blockState2, bl);
-        //this.talk(level, blockPos, blockState, TalkingFlowerDialogue.PLACED);
-    }
-
-    @Override
-    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
-        super.onRemove(blockState, level, blockPos, blockState2, bl);
-        //this.talk(level, blockPos, blockState, TalkingFlowerDialogue.DESTROYED);
+    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+        level.playSound(null, blockPos, OUSoundEvents.TALKING_FLOWER_DESTROYED, SoundSource.BLOCKS, 1, 1);
+        super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     @Override
@@ -75,7 +68,7 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
 
         if (serverLevel.dimension() == Level.OVERWORLD && blockPos.getY() > 100) dialogue = TalkingFlowerDialogue.IN_THE_SKY;
         else if (serverLevel.dimension() == Level.OVERWORLD && blockPos.getY() < 50) dialogue = TalkingFlowerDialogue.UNDERGROUND;
-        else if (serverLevel.getRawBrightness(blockPos, 0) < 9) dialogue = TalkingFlowerDialogue.IN_THE_DARK;
+        else if (serverLevel.isNight() && !blockState.getValue(WATERLOGGED)) dialogue = TalkingFlowerDialogue.IN_THE_DARK;
         else if (blockState.getValue(WATERLOGGED)) dialogue = TalkingFlowerDialogue.UNDERWATER;
         else dialogue = TalkingFlowerDialogue.WONDER;
 
@@ -107,17 +100,15 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
             case CONTACT -> event = OUSoundEvents.TALKING_FLOWER_CONTACT;
             case WONDER -> event = OUSoundEvents.TALKING_FLOWER_WONDER;
             case INTERACTED -> event = OUSoundEvents.TALKING_FLOWER_INTERACTED;
-            case UNDERWATER -> {
-                if (level instanceof ServerLevel serverLevel) serverLevel.sendParticles(ParticleTypes.BUBBLE_COLUMN_UP, blockPos.getX() + 0.5, blockPos.getY() + 0.2, blockPos.getZ() + 0.5, 15,0.05,0.5,0.05,0.2);
-                event = OUSoundEvents.TALKING_FLOWER_UNDERWATER;
-            }
+            case UNDERWATER -> event = OUSoundEvents.TALKING_FLOWER_UNDERWATER;
             case IN_THE_DARK -> event = OUSoundEvents.TALKING_FLOWER_IN_THE_DARK;
             case UNDERGROUND -> event = OUSoundEvents.TALKING_FLOWER_UNDERGROUND;
             case IN_THE_SKY -> event = OUSoundEvents.TALKING_FLOWER_IN_THE_SKY;
             case PLACED -> event = OUSoundEvents.TALKING_FLOWER_PLACED;
-            case DESTROYED -> event = OUSoundEvents.TALKING_FLOWER_DESTROYED;
             default -> event = SoundEvents.EMPTY;
         }
+        if (level instanceof ServerLevel serverLevel && blockState.getValue(WATERLOGGED)) serverLevel.sendParticles(ParticleTypes.BUBBLE_COLUMN_UP, blockPos.getX() + 0.5, blockPos.getY() + 0.2, blockPos.getZ() + 0.5, 15,0.05,0.5,0.05,0.2);
+
         level.playSound(null, blockPos, event, SoundSource.BLOCKS, 1, 1);
         level.scheduleTick(blockPos, this, dialogue.getDuration());
     }
@@ -132,6 +123,7 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
         LevelAccessor levelAccessor = blockPlaceContext.getLevel();
         BlockPos blockPos = blockPlaceContext.getClickedPos();
         boolean bl = levelAccessor.getFluidState(blockPos).getType() == Fluids.WATER;
+        this.talk(blockPlaceContext.getLevel(), blockPos, this.defaultBlockState(), TalkingFlowerDialogue.PLACED);
         return this.defaultBlockState().setValue(WATERLOGGED, bl).setValue(FACING, blockPlaceContext.getHorizontalDirection().getOpposite());
     }
 

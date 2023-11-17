@@ -1,0 +1,106 @@
+{
+	"block.talking_flower.wonder": {
+		"sounds": [
+			"onward_upward:talking_flower/wonder1",
+			"onward_upward:talking_flower/wonder2",
+			"onward_upward:talking_flower/wonder3",
+			"onward_upward:talking_flower/wonder4",
+			"onward_upward:talking_flower/wonder5",
+			"onward_upward:talking_flower/wonder6",
+			"onward_upward:talking_flower/wonder7"
+		],
+		"subtitle": "subtitles.block.talking_flower.wonder"
+	},
+	"block.talking_flower.contact": {
+		"sounds": [
+			"onward_upward:talking_flower/contact1",
+			"onward_upward:talking_flower/contact2",
+			"onward_upward:talking_flower/contact3",
+			"onward_upward:talking_flower/contact4"
+		],
+		"subtitle": "subtitles.block.talking_flower.contact"
+	},
+	"block.talking_flower.in_the_dark": {
+		"sounds": [
+			"onward_upward:talking_flower/in_the_dark1",
+			"onward_upward:talking_flower/in_the_dark2",
+			"onward_upward:talking_flower/in_the_dark3",
+			"onward_upward:talking_flower/in_the_dark4"
+		],
+		"subtitle": "subtitles.block.talking_flower.in_the_dark"
+	},
+	"block.talking_flower.in_the_sky": {
+		"sounds": [
+			"onward_upward:talking_flower/in_the_sky1",
+			"onward_upward:talking_flower/in_the_sky2",
+			"onward_upward:talking_flower/in_the_sky3"
+		],
+		"subtitle": "subtitles.block.talking_flower.in_the_sky"
+	},
+	"block.talking_flower.interacted": {
+		"sounds": [
+			"onward_upward:talking_flower/interacted1",
+			"onward_upward:talking_flower/interacted2",
+			"onward_upward:talking_flower/interacted3",
+			"onward_upward:talking_flower/interacted4",
+			"onward_upward:talking_flower/interacted5",
+			"onward_upward:talking_flower/interacted6",
+			"onward_upward:talking_flower/interacted7",
+			"onward_upward:talking_flower/interacted8",
+			"onward_upward:talking_flower/interacted9",
+			"onward_upward:talking_flower/interacted10",
+			"onward_upward:talking_flower/interacted11"
+		],
+		"subtitle": "subtitles.block.talking_flower.interacted"
+	},
+	"block.talking_flower.pot": {
+		"sounds": [
+			"onward_upward:talking_flower/pot_place1",
+			"onward_upward:talking_flower/pot_place2",
+			"onward_upward:talking_flower/pot_place3"
+		],
+		"subtitle": "subtitles.block.talking_flower.pot_place"
+	},
+	"block.talking_flower.pot_remove": {
+		"sounds": [
+			"onward_upward:talking_flower/pot_remove1",
+			"onward_upward:talking_flower/pot_remove2",
+			"onward_upward:talking_flower/pot_remove3"
+		],
+		"subtitle": "subtitles.block.talking_flower.pot_remove"
+	},
+	"block.talking_flower.underground": {
+		"sounds": [
+			"onward_upward:talking_flower/underground1",
+			"onward_upward:talking_flower/underground2",
+			"onward_upward:talking_flower/underground3",
+			"onward_upward:talking_flower/underground4"
+		],
+		"subtitle": "subtitles.block.talking_flower.underground"
+	},
+	"block.talking_flower.underwater": {
+		"sounds": [
+			"onward_upward:talking_flower/underwater1",
+			"onward_upward:talking_flower/underwater2",
+			"onward_upward:talking_flower/underwater3",
+			"onward_upward:talking_flower/underwater4"
+		],
+		"subtitle": "subtitles.block.talking_flower.underwater"
+	},
+	"block.talking_flower.placed": {
+		"sounds": [
+			"onward_upward:talking_flower/place1",
+			"onward_upward:talking_flower/place2",
+			"onward_upward:talking_flower/place3"
+		],
+		"subtitle": "subtitles.block.talking_flower.place"
+	},
+	"block.talking_flower.destroyed": {
+		"sounds": [
+			"onward_upward:talking_flower/remove1",
+			"onward_upward:talking_flower/remove2",
+			"onward_upward:talking_flower/remove3"
+		],
+		"subtitle": "subtitles.block.talking_flower.remove"
+	}
+}
