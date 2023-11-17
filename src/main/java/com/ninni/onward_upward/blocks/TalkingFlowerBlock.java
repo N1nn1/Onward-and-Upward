@@ -47,21 +47,16 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
     }
 
     @Override
+    public void onPlace(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
+        super.onPlace(blockState, level, blockPos, blockState2, bl);
+    }
+
+    @Override
     public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
         level.playSound(null, blockPos, OUSoundEvents.TALKING_FLOWER_DESTROYED, SoundSource.BLOCKS, 1, 1);
         super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
-    @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-
-        if (player.getItemInHand(interactionHand).isEmpty() && !blockState.getValue(TALKING)) {
-            this.talk(level, blockPos, blockState, TalkingFlowerDialogue.INTERACTED);
-            return InteractionResult.SUCCESS;
-        }
-
-        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
-    }
 
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         TalkingFlowerDialogue dialogue;
@@ -72,6 +67,7 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
         else if (blockState.getValue(WATERLOGGED)) dialogue = TalkingFlowerDialogue.UNDERWATER;
         else dialogue = TalkingFlowerDialogue.WONDER;
 
+        //TODO this doesnt make the flower talk
         if (randomSource.nextInt(3) == 0 && !blockState.getValue(TALKING)) {
             this.talk(serverLevel, blockPos, blockState, dialogue);
         }
