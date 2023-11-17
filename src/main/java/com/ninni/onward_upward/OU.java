@@ -13,7 +13,8 @@ public class OU implements ModInitializer {
 		Reflection.initialize(
 				OUCreativeModeTab.class,
 				OUItems.class,
-				OUBlocks.class
+				OUBlocks.class,
+				OUSoundEvents.class
 		);
 	}
 }

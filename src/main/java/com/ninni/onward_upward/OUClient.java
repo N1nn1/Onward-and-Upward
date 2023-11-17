@@ -11,7 +11,8 @@ public class OUClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
-				OUBlocks.TALKING_FLOWER
+				OUBlocks.TALKING_FLOWER,
+				OUBlocks.POTTED_TALKING_FLOWER
 		);
 	}
 }
