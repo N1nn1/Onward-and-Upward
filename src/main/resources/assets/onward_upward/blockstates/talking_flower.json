@@ -1,0 +1,42 @@
+{
+  "variants": {
+    "facing=east,talking=false": {
+      "model": "onward_upward:block/talking_flower",
+      "y": 90,
+      "uvlock": false
+    },
+    "facing=north,talking=false": {
+      "model": "onward_upward:block/talking_flower",
+      "uvlock": false
+    },
+    "facing=south,talking=false": {
+      "model": "onward_upward:block/talking_flower",
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west,talking=false": {
+      "model": "onward_upward:block/talking_flower",
+      "y": 270,
+      "uvlock": false
+    },
+    "facing=east,talking=true": {
+      "model": "onward_upward:block/talking_flower_talking",
+      "y": 90,
+      "uvlock": false
+    },
+    "facing=north,talking=true": {
+      "model": "onward_upward:block/talking_flower_talking",
+      "uvlock": false
+    },
+    "facing=south,talking=true": {
+      "model": "onward_upward:block/talking_flower_talking",
+      "y": 180,
+      "uvlock": false
+    },
+    "facing=west,talking=true": {
+      "model": "onward_upward:block/talking_flower_talking",
+      "y": 270,
+      "uvlock": false
+    }
+  }
+}
