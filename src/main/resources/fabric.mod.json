@@ -1,39 +1,38 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
-	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"id": "onward_upward",
+	"version": "1.0.0-fabric",
+
+	"name": "Onward and Upward!",
+	"description": "An animal mod that tries to add new animals with niches and personality to the Minecraft world",
 	"authors": [
-		"Me!"
+		"Ninni"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"issues": "https://github.com/N1nn1/Onward-and-Upward/issues",
+		"sources": "https://github.com/N1nn1/Onward-and-Upward"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "All Rights Reserved",
+	"icon": "assets/onward_upward/icon.png",
+
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.ninni.onward_upward.OU"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.ninni.onward_upward.OUClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
-		{
-			"config": "modid.client.mixins.json",
-			"environment": "client"
-		}
+		"onward_upward.mixins.json"
 	],
+
 	"depends": {
-		"fabricloader": ">=0.14.22",
-		"minecraft": "~1.20.2",
-		"java": ">=17",
-		"fabric-api": "*"
+		"fabricloader": ">=0.14.24",
+		"fabric-api": "*",
+		"minecraft": "~1.20",
+		"java": ">=17"
 	},
 	"suggests": {
 		"another-mod": "*"
