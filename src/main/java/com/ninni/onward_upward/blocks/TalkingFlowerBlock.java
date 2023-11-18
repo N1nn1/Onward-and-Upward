@@ -71,7 +71,6 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
         else if (blockState.getValue(WATERLOGGED)) dialogue = TalkingFlowerDialogue.UNDERWATER;
         else dialogue = TalkingFlowerDialogue.WONDER;
 
-        //TODO this doesnt make the flower talk
         if (randomSource.nextInt(3) == 0 && !blockState.getValue(TALKING)) {
             this.talk(serverLevel, blockPos, blockState, dialogue);
         }
@@ -94,7 +93,7 @@ public class TalkingFlowerBlock extends BushBlock implements SimpleWaterloggedBl
 
 
     public void talk(Level level, BlockPos blockPos, BlockState blockState, TalkingFlowerDialogue dialogue) {
-        level.setBlock(blockPos, blockState.setValue(TALKING, true), 4);
+        level.setBlockAndUpdate(blockPos, blockState.setValue(TALKING, true));
         SoundEvent event;
         switch (dialogue) {
             case CONTACT -> event = OUSoundEvents.TALKING_FLOWER_CONTACT;
