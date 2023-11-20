@@ -3,11 +3,7 @@
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 30
-    },
-    {
-      "type": "minecraft:count",
-      "count": 3
+      "chance": 70
     },
     {
       "type": "minecraft:in_square"
@@ -15,6 +11,24 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:environment_scan",
+      "allowed_search_condition": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+      },
+      "direction_of_search": "down",
+      "max_steps": 12,
+      "target_condition": {
+        "type": "minecraft:has_sturdy_face",
+        "direction": "up"
+      }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": 1
     },
     {
       "type": "minecraft:biome"
